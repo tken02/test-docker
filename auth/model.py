@@ -11,4 +11,5 @@ class LoginForm(FlaskForm):
 class User(me.Document, UserMixin):
 	username = me.StringField()
 	password = me.StringField()
+	publicKey = me.StringField()
 	meta = {'collection': 'users'}

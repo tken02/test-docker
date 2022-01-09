@@ -11,6 +11,7 @@ app.config.from_object('config.Config')
 # Auth
 login_manager = LoginManager()
 
+# login_manager.session_protection = None
 login_manager.init_app(app)
 
 # CSRF protection: Can't make it works, I gave up

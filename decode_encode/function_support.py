@@ -39,13 +39,13 @@ def check_prime(num):
 
 # tính n = p*q
 def calculate_n(p,q):
-    return p * q   
+    return p * q
 
 # tính phi_n = (p-1) * (q -1)
 def calculate_phi_n(p,q):
     return (p-1) * (q-1)
 
-# tạo số nguyên nguyên tố khoảng 24 bits trở xuống, lớn quá hàm check_Prime 
+# tạo số nguyên nguyên tố khoảng 24 bits trở xuống, lớn quá hàm check_Prime
 def creat_Prime(bit):
     p = random.getrandbits(bit)
     while check_prime(p) != True or p == 1:
@@ -100,7 +100,7 @@ def create_write_key():
     f1 = open(path+ "rsa.txt",'w')
     f1.write("{} {}".format(d, n))
     f1.close()
-    
+
 def read_file(filename):
     with open(filename,'r') as f:
         data = f.read()
@@ -116,7 +116,7 @@ def Encrypted(image,path_pbKey):
     list_encryp ="DONE"
     base64_encoded_data = base64.b64encode(image)
     base64_message = base64_encoded_data.decode('utf-8')
-    f = open("encrypted.txt",'w')
+    f = open("encrypted.png",'w')
     for i in base64_message:
         tem = ord(i)
         c = powermod(tem,e,n)
@@ -132,7 +132,7 @@ def Decrypted(pathEncode, path_private_key):
     d_n = private_key.split(" ")
     d = int(d_n[0])
     n= int(d_n[1])
-    
+
     list_base64 = data.split(" ")
     base64_img =""
     for i in list_base64:
