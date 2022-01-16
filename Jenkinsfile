@@ -10,7 +10,14 @@ pipeline {
         }
         stage ("Publish to Docker Hub") {
             steps {
-                sh "docker push duckymomo20012/cryptohub:latest"
+                withDockerRegistry(credentialsId: 'dockerhub') {
+                    sh "docker push duckymomo20012/cryptohub:latest"
+                }
+            }
+        }
+        stage ("Deploy app to container") {
+            steps {
+                sh "docker run --name web-server -dp 5000:5000 crypto:latest"
             }
         }
     }
