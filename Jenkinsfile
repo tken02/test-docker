@@ -17,7 +17,7 @@ pipeline {
         }
         stage ("Deploy app to container") {
             steps {
-                sh "docker run --name web-server --rm -dp 80:80 crypto:latest"
+                sh "docker run --name web-server --rm -dp 127.0.0.1:1234:1234 crypto:latest"
             }
         }
     }
