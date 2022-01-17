@@ -10,7 +10,7 @@ pipeline {
         }
         stage ("Publish to Docker Hub") {
             steps {
-                withDockerRegistry(credentialsId: 'dockerhub') {
+                withDockerRegistry(credentialsId: "dockerhub", url: "") {
                     sh "docker push duckymomo20012/cryptohub:latest"
                 }
             }
